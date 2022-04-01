@@ -83,17 +83,20 @@ void VisionTest3()
       x = VisionSensor.largestObject.centerX;
       if(x< (center-OKError)) //If the object is to the left of center
       {
-        //RightMotor.spin(directionType::rev, 25, velocityUnits::pct);
-        //LeftMotor.spin(directionType::fwd, 25, velocityUnits::pct);
+        Brain.Screen.print ("Attempting to move, first one");
+        rightWheels.spin(directionType::rev, 25, velocityUnits::pct);
+        leftWheels.spin(directionType::fwd, 25, velocityUnits::pct);
       } 
       else if (x> center + OKError) //If the object is to the right of center
       {
-        //RightMotor.spin(directionType::fwd, 25, velocityUnits::pct);
-        //LeftMotor.spin(directionType::rev, 25, velocityUnits::pct);
+        Brain.Screen.print ("Attempting to move, second one");
+        rightWheels.spin(directionType::fwd, 25, velocityUnits::pct);
+        leftWheels.spin(directionType::rev, 25, velocityUnits::pct);
       } else //The object is not to the right of center and not to the left of center
       {
-        //LeftMotor.stop(brakeType::brake);
-        //RightMotor.stop(brakeType::brake);
+        Brain.Screen.print ("Attempting to move, third one");
+        leftWheels.stop(brakeType::brake);
+        rightWheels.stop(brakeType::brake);
       }
     }
   task::sleep(100);
@@ -104,7 +107,7 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   //VisionTest1();
-  VisionTest2();
+  //VisionTest2();
   VisionTest3();
 
 }
