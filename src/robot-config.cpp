@@ -1,15 +1,24 @@
 #include "vex.h"
-
+#include "robot-config.h"
 using namespace vex;
 
 // A global instance of brain used for printing to the V5 brain screen
 brain Brain;
 
-/**
- * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- *
- * This should be called at the start of your int main function.
- */
-void vexcodeInit(void) {
-  // Nothing to initialize
+//Driving motors
+motor left1(PORT1, ratio18_1, false); //front left
+motor left2(PORT20, ratio18_1, true); //back left
+
+motor right1(PORT10, ratio18_1, false); //front right
+motor right2(PORT7, ratio18_1, true); //back right
+
+//Motor Groups
+motor_group leftWheels(left1, left2);
+motor_group rightWheels(right1, right2);
+
+//extern vision VisionSensor;
+
+void vexcodeInit(void) 
+{
+  
 }
