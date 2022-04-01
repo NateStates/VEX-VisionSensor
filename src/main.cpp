@@ -28,6 +28,7 @@ void VisionTest1()
     VisionSensor.takeSnapshot(RED_GOAL);
     if (VisionSensor.largestObject.exists)
     {
+      
       Brain.Screen.print("Vision Sensor: x: %d", VisionSensor.largestObject.originX);
       Brain.Screen.print(" Y: %d", VisionSensor.largestObject.originY);
       Brain.Screen.print(" W %d", VisionSensor.largestObject.width);
