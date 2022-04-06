@@ -38,8 +38,8 @@ int main() {
 
   //BLUE_GOAL for blue
   //RED_GOAL for red
-  VisionTest3(BLUE_GOAL, 25); //NOTE: LETTERS HAS TO BE EXACT. 
-
+  //VisionTest3(BLUE_GOAL, 25); //NOTE: LETTERS HAS TO BE EXACT. 
+  VisionTest3(RED_GOAL, 25); //NOTE: LETTERS HAS TO BE EXACT. 
 }
 
 
@@ -67,7 +67,14 @@ void VisionTest3(vex::vision::signature colorOfGoal, double speed)
       height = VisionSensor.largestObject.height;
       printf("height: %d\n", height);
       Brain.Screen.print (" X: %d Y: %d Width: %d Height: %d ",x, y, width, height);
-      Brain.Screen.setFillColor(color::blue);
+      if(VisionSensor.takeSnapshot(colorOfGoal) == VisionSensor.takeSnapshot(BLUE_GOAL))
+      {
+        Brain.Screen.setFillColor(color::blue);
+      }
+      else if(VisionSensor.takeSnapshot(colorOfGoal) == VisionSensor.takeSnapshot(RED_GOAL))
+      {
+        Brain.Screen.setFillColor(color::red);
+      }
       Brain.Screen.drawRectangle(x*xScale, y*yScale, width*xScale, height*yScale);
       
       if(targetCenter < (center - OKError)) //If the object is to the left of center
@@ -85,13 +92,14 @@ void VisionTest3(vex::vision::signature colorOfGoal, double speed)
         leftWheels.spin(directionType::rev, speed, velocityUnits::pct);
         // rightWheels.spin(directionType::fwd, 25, velocityUnits::pct);
         // leftWheels.spin(directionType::rev, 25, velocityUnits::pct);
-      } else //The object is not to the right of center and not to the left of center
+      } 
+      else //The object is not to the right of center and not to the left of center
       {
         //turn stop
         leftWheels.stop(brakeType::brake);
         rightWheels.stop(brakeType::brake);
 
-        if(width < 258+OKError && height < 145+OKError) //(width < 314+OKError) || (height < 145+OKError || height > 145-OKError)
+        if(width < 263+OKError && height < 145+OKError) //(width < 314+OKError) || (height < 145+OKError || height > 145-OKError)
         {
           printf("Attempting to get close enough to goal\n");
           moveForward(15,25,5);
