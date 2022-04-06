@@ -17,8 +17,8 @@ void moveForward(float distanceCM, int speedPCT, int timeSec){
 
   // leftWheels.rotateFor(fwd, double (distanceCM/31.9), rev, double (speedPCT), pct,false);
   // rightWheels.rotateFor(fwd, double (distanceCM/31.9), rev, double (speedPCT), pct,true);
-  leftWheels.rotateFor(directionType::fwd, double (distanceCM/31.9), rotationUnits::rev, double (speedPCT), velocityUnits::pct,false);
-  rightWheels.rotateFor(directionType::fwd, double (distanceCM/31.9), rotationUnits::rev, double (speedPCT), velocityUnits::pct,true);
+  leftWheels.rotateFor(directionType::rev, double (distanceCM/31.9), rotationUnits::rev, double (speedPCT), velocityUnits::pct,false);
+  rightWheels.rotateFor(directionType::rev, double (distanceCM/31.9), rotationUnits::rev, double (speedPCT), velocityUnits::pct,true);
 
   setMotorTimeout(0);
 }

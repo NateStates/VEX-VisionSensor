@@ -6,11 +6,11 @@ using namespace vex;
 brain Brain;
 
 //Driving motors
-motor left1(PORT1, ratio18_1, false); //front left
+motor left1(PORT1, ratio18_1, true); //front left
 motor left2(PORT11, ratio18_1, true); //back left
 
 motor right1(PORT9, ratio18_1, false); //front right
-motor right2(PORT20, ratio18_1, true); //back right
+motor right2(PORT20, ratio18_1, false); //back right
 
 //Motor Groups
 motor_group leftWheels(left1, left2);

@@ -1,5 +1,5 @@
-#ifndef AUTONOMOUS_FUNCTIONS
-#define AUTONOMOUS_FUNCTIONS
+#ifndef FUNCTIONS
+#define FUNCTIONS
 
 //Timeout function: time to do command until motor stops
 void setMotorTimeout(int timeSeconds);
